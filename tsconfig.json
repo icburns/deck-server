@@ -10,6 +10,8 @@
         // "outFile": "dist/app.js"
     },
     "include": [
-        "./*.ts"
+        "app.ts",
+        "models/*.ts",
+        "viewModels/*.ts"
     ]
 }
