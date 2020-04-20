@@ -13,13 +13,13 @@ export class ActionModel {
 }
 
 export enum Action {
-    BackLunge = "BackLunge",
+    ReverseLunge = "ReverseLunge",
     Pushup = "Pushup",
     Bridge = "Bridge",
     Squat = "Squat",
     MountainClimber = "MountainClimber",
-    BodySaw = "BodySaw",
+    BodyPlankSaw = "BodyPlankSaw",
     FlutterKick = "FlutterKick",
-    ReachThrough = "ReachThrough",
-    SquatJump = "SquatJump"
+    RollUp = "RollUp",
+    SumoSquatJump = "SumoSquatJump"
 }

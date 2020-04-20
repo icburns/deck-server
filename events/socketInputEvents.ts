@@ -1,3 +1,7 @@
 export enum SocketInputEvents {
-    joinRoom = "joinRoom"
+    joinRoom = "joinRoom",
+    getDeck = "getDeck",
+    postDeck = "postDeck",
+    drawCard = "drawCard",
+    addCard = "addCard"
 }

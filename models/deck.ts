@@ -1,10 +1,11 @@
 import {Card} from "./card"
-import {Mappings} from "./mappings"
 import { Value } from "./value";
 import { Suit } from "./suit";
+import { DeckCreateViewModel } from "../viewModels/socketInputViewModels"
 
 export class Deck {
     id: string;
+    active: Card;
     draw: Card[];
     discard: Card[];
 
@@ -14,14 +15,16 @@ export class Deck {
 
         for (let m in createModel.mappings) {
             let action = (createModel.mappings as any)[m];
-            if (m in Suit) {
+            if (m in Suit && m !== Suit.joker) {
                 for (let v = 2; v <= 10; v++) {
                     action.reps = v;
                     this.draw.push(new Card(<Suit>m, <Value>v, action));
                 }
             } else {
                 for (let s in Suit) {
-                    this.draw.push(new Card(<Suit>s, <Value>m, action));
+                    if (s !== Suit.joker) {
+                        this.draw.push(new Card(<Suit>s, <Value>m, action));
+                    }
                 }
             }
         }
@@ -43,9 +46,21 @@ export class Deck {
         }
     }
 
-}
+    drawCard = () => {
+        if (this.draw.length <= 0) {
+            return;
+        }
 
-export class DeckCreateViewModel {
-    id: string;
-    mappings: Mappings;
+        if (this.active) {
+            this.discard.push(this.active);
+        }
+
+        this.active = this.draw.pop();
+
+    }
+
+    addCard = (card: Card) => {
+        this.draw.push(card);
+    }
+
 }
