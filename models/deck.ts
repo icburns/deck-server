@@ -22,7 +22,7 @@ export class Deck {
                 }
             } else {
                 for (let s in Suit) {
-                    if (s !== Suit.joker) {
+                    if (s !== Suit.joker && m !== Value.joker) {
                         this.draw.push(new Card(<Suit>s, <Value>m, action));
                     }
                 }
